@@ -1,0 +1,39 @@
+{
+  "trace_id": "016f83e19deb4d5cb7567e7769a24ada",
+  "project_id": "song_001",
+  "stage": "composition",
+  "artifact_version": 1,
+  "response": {
+    "status": "response_received",
+    "started_at": "2026-10-30 16:17:51（北京时间）",
+    "elapsed_seconds": 13.75,
+    "requested_model": "deepseek-flash",
+    "parameters": {
+      "response_format": {
+        "type": "json_object"
+      },
+      "max_tokens": 8192
+    },
+    "response_id": "b05f7015-d145-4a90-929b-adeeec33d7e4",
+    "returned_model": "deepseek-flash",
+    "finish_reason": "stop",
+    "usage": {
+      "prompt_tokens": 1230,
+      "completion_tokens": 1904,
+      "total_tokens": 3134,
+      "prompt_tokens_details": {
+        "cached_tokens": 384
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 968
+      },
+      "prompt_cache_hit_tokens": 384,
+      "prompt_cache_miss_tokens": 846
+    },
+    "response_summary": {
+      "characters": 1529,
+      "preview": "{\"bpm\":96,\"key\":\"D 大调\",\"sections\":[{\"name\":\"主歌1\",\"duration_seconds\":26,\"arrangement\":\"以清音吉他的分解和弦为主，D–A–Bm–G 循环，配暖色Pad与鼓刷边击，贝斯只走根音；人声在中低音区近讲、克制，句尾轻微上行，表现温暖回忆与轻微不舍，最后两小节加入细小吉他泛音作为过渡。\"},{\"name\":\"预副歌1\",\"duration_seconds\":22,\"arrangement\":\"鼓组正式进入，军鼓边击转为稳定八分律动，贝斯改为八分推进，吉他由分解转为轻扫弦，合成器长音铺底；和声在句尾轻轻叠入，人声逐步抬升，",
+      "sha256": "c173822a54e9625759560b71701175aaeed664e571358ebefd0d13e909f15039"
+    }
+  }
+}

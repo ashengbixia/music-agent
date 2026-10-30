@@ -1,0 +1,21 @@
+{
+  "project_id": "song_001",
+  "lyrics_approval": {
+    "reviewer": "阿圣",
+    "decision": "approved",
+    "version": 1,
+    "sha256": "180548d86bd3a40aaa8a6f318d9fac5655ff49c937a19e98372002b814c59697",
+    "approved_at": "2026-10-30 16:17:42（北京时间）"
+  },
+  "audio_approval": {
+    "reviewer": "阿圣",
+    "decision": "approved",
+    "version": 1,
+    "sha256": "fc08d6521d9027886f10605658838728c353af2b7ca55d92ceb2ec31e1cf5605",
+    "composition_version": 1,
+    "composition_sha256": "52149f5039e2b5f604be4be8cf20cbbfba4ea6f4cf7cd43609e250e6323c183f",
+    "lyrics_version": 1,
+    "lyrics_sha256": "180548d86bd3a40aaa8a6f318d9fac5655ff49c937a19e98372002b814c59697",
+    "approved_at": "2026-10-30 16:18:09（北京时间）"
+  }
+}
