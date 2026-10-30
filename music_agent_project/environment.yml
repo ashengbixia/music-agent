@@ -1,8 +1,0 @@
-name: music_agent
-channels:
-  - conda-forge
-dependencies:
-  - python=3.11
-  - "jsonschema>=4,<5"
-  - "pillow>=10,<13"
-  - "pytest>=7,<10"
