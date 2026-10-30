@@ -20,6 +20,33 @@
 | 无需密钥，验证程序完整流程 | 本文第 8 节，或 [无密钥模拟演示](docs/本地演示与命令手册.md#8-无密钥模拟演示与自动化测试) |
 | 使用 DeepSeek 创建自己的项目 | 从下方安装与配置开始，再按第 4 节执行 |
 
+## Agent 架构
+flowchart TB
+    BRIEF["歌曲需求单 Brief"] --> MAIN
+
+    MAIN["音乐创作主 Agent<br/>理解需求 · 生成计划 · 调度任务<br/>控制审核关卡 · 保存状态 · 失败恢复"]
+
+    MAIN -->|"下发作词任务"| LYRICS
+    LYRICS["作词子 Agent<br/>DeepSeek 生成歌词<br/>Schema 校验 · 根据反馈修订"]
+    LYRICS -->|"歌名、分段歌词、情绪标记"| REVIEW1
+
+    REVIEW1{"人工审核歌词"}
+    REVIEW1 -->|"不通过：反馈修改意见"| LYRICS
+    REVIEW1 -->|"通过：交回主 Agent"| APPROVED["已审核歌词"]
+
+    APPROVED -->|"主 Agent 下发作曲任务"| AUDIO
+    AUDIO["作曲 / 音频子 Agent<br/>DeepSeek 生成作曲方案<br/>本地 mock 生成音频<br/>返回参数、版本、哈希与交接清单"]
+    AUDIO --> REVIEW2
+
+    REVIEW2{"人工审核音频"}
+    REVIEW2 -->|"通过"| EXPORT["主 Agent 校验并导出"]
+
+    EXPORT --> PACKAGE["本地发行物料包<br/>release-package"]
+    EXPORT --> REPORT["运行报告<br/>run_report.json"]
+
+    MAIN -.->|"调度与恢复"| AUDIO
+    MAIN -.->|"控制导出条件"| EXPORT
+
 ## 1. 安装
 
 在项目根目录打开终端，使用 conda 创建环境：
