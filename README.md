@@ -24,16 +24,23 @@
 
 ```mermaid
 flowchart TB
-    BRIEF["歌曲需求单 Brief"] --> MAIN["音乐创作主 Agent<br/>生成计划 · 调度任务<br/>控制审核 · 保存状态 · 失败恢复"]
+    BRIEF["歌曲需求单 Brief"] --> MAIN
 
-    MAIN -->|"下发作词任务"| LYRICS["作词子 Agent<br/>DeepSeek 生成歌词<br/>Schema 校验与修订"]
-    LYRICS --> REVIEW1{"人工审核歌词"}
-    REVIEW1 -->|"不通过：反馈修改"| LYRICS
-    REVIEW1 -->|"通过"| APPROVED["已审核歌词"]
+    MAIN["音乐创作主 Agent<br/>理解需求 · 生成计划 · 调度任务<br/>控制审核关卡 · 保存状态 · 失败恢复"]
 
-    APPROVED -->|"主 Agent 下发任务"| AUDIO["作曲 / 音频子 Agent<br/>DeepSeek 生成作曲方案<br/>本地 mock 生成音频<br/>输出参数、版本、哈希与交接清单"]
+    MAIN -->|"下发作词任务"| LYRICS
+    LYRICS["作词子 Agent<br/>DeepSeek 生成歌词<br/>Schema 校验 · 根据反馈修订"]
+    LYRICS -->|"歌名、分段歌词、情绪标记"| REVIEW1
 
-    AUDIO --> REVIEW2{"人工审核音频"}
+    REVIEW1{"人工审核歌词"}
+    REVIEW1 -->|"不通过：反馈修改意见"| LYRICS
+    REVIEW1 -->|"通过：交回主 Agent"| APPROVED["已审核歌词"]
+
+    APPROVED -->|"主 Agent 下发作曲任务"| AUDIO
+    AUDIO["作曲 / 音频子 Agent<br/>DeepSeek 生成作曲方案<br/>本地 mock 生成音频<br/>返回参数、版本、哈希与交接清单"]
+    AUDIO --> REVIEW2
+
+    REVIEW2{"人工审核音频"}
     REVIEW2 -->|"通过"| EXPORT["主 Agent 校验并导出"]
 
     EXPORT --> PACKAGE["本地发行物料包<br/>release-package"]
