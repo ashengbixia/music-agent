@@ -1,0 +1,2 @@
+# Optional evaluation dependencies; the production workflow does not import DeepEval.
+deepeval==4.3.3
